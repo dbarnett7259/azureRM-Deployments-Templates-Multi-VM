@@ -16,8 +16,5 @@
           "description": "this will be the sas key to access artifacts"
         }
       }
-    },
-    "variables": {},
-    "resources": [{}],
-    "outputs": {}
-  }
+    }
+}
