@@ -108,9 +108,6 @@
         "AzureActivity",
         "AntiMalware"
       ],
-      "tags": {
-        "scenario": "Vm-Virus-Attack-Prevention"
-      },
       "subnets": [
         {
           "name": "[parameters('subnetName')]",
@@ -168,9 +165,6 @@
             },
             "location": {
               "value": "[parameters('location')]"
-            },
-            "tags": {
-              "value": "[variables('tags')]"
             }
           }
         }
@@ -196,9 +190,6 @@
             },
             "location": {
               "value": "[parameters('location')]"
-            },
-            "tags": {
-              "value": "[variables('tags')]"
             }
           }
         }
@@ -221,9 +212,6 @@
             },
             "location": {
               "value": "[parameters('location')]"
-            },
-            "tags": {
-              "value": "[variables('tags')]"
             }
           }
         }
@@ -253,9 +241,6 @@
             },
             "location": {
               "value": "[parameters('location')]"
-            },
-            "tags": {
-              "value": "[variables('tags')]"
             }
           }
         }
@@ -293,9 +278,6 @@
             },
             "nsgId": {
               "value": "[resourceId('Microsoft.Network/networkSecurityGroups',variables('nsgName'))]"
-            },
-            "tags": {
-              "value": "[variables('tags')]"
             }
           }
         }
@@ -317,23 +299,11 @@
             "uri": "[variables('vmTemplateUri')]"
           },
           "parameters": {
-            "vmName": {
-              "value": "[concat(variables('vmNames')[copyIndex()])]"
-            },
             "adminUsername": {
               "value": "[parameters('adminUserName')]"
             },
-            "adminPassword": {
-              "value": "[parameters('adminUserPassword')]"
-            },
-            "nicId": {
-              "value": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('vmNames')[copyIndex()],'-nic'))]"
-            },
             "location": {
               "value": "[parameters('location')]"
-            },
-            "tags": {
-              "value": "[variables('tags')]"
             }
           }
         }
