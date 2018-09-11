@@ -2,19 +2,93 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "_artifactsLocation": {
-        "type": "string",
-        "defaultValue": "https://github.com/dbarnett7259/Azure-azure-quickstart-templates-master-101-Multi-VM-Deployment-microsoft.compute-/tree/dbarnett7259-patch-1/azuredeploy.json",
-        "metadata": {
-          "description": "this will be the location for artifacts"
+        "vmName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the virtual machine"
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "Admin user name for the virtual machine"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Admin user password for virtual machine"
+            }
+        },
+        "vmSize": {
+            "type": "string",
+            "defaultValue": "Standard_DS2_v2",
+            "metadata": {
+                "description": "Size of VM"
+            }
+        },
+        "imagePublisher": {
+            "type": "string",
+            "defaultValue": "MicrosoftWindowsServer"
+        },
+        "imageOffer": {
+            "type": "string",
+            "defaultValue": "WindowsServer"
+        },
+        "osSku": {
+            "type": "string",
+            "defaultValue": "2012-R2-Datacenter",
+            "metadata": {
+                "description": "OS sku for VM"
+            }
+        },
+        "nicId": {
+            "type": "string",
+            "metadata": {
+                "description": "Network interface id."
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "VM deployment location."
+            }
         }
-      },
-      "_artifactsLocationSasToken": {
-        "type": "securestring",
-        "defaultValue": "",
-        "metadata": {
-          "description": "this will be the sas key to access artifacts"
+     },
+    "resources": [
+        {
+            "apiVersion": "2017-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('vmName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('vmSize')]"
+                },
+                "osProfile": {
+                    "computerName": "[parameters('vmName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[parameters('imagePublisher')]",
+                        "offer": "[parameters('imageOffer')]",
+                        "sku": "[parameters('osSku')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage"
+                    }                    
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('nicId')]"
+                        }
+                    ]
+                }
+            }
         }
-      }
-    }
+    ]
 }
