@@ -76,11 +76,15 @@
                         "offer": "[parameters('imageOffer')]",
                         "sku": "[parameters('osSku')]",
                         "version": "latest"
-                    },
-                    "osDisk": {
-                        "createOption": "FromImage"
-                    }                    
-                },
+                 },
+                 "osDisk": {
+                     "createOption": "FromImage",
+                     "name": "[parameters('VMName')]",
+                     "vhd": {
+                         "uri": "[concat('https://" + $StorageAccountName + ".blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
+                      },
+                     "caching": "ReadWrite"
+                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
