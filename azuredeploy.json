@@ -84,6 +84,7 @@
                          "uri": "[concat('https://', parameters('StorageAccount'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
                      },
                      "caching": "ReadWrite"
+                    }
                  },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -95,6 +96,4 @@
             }
         }
     ]
-}
-        
 }
