@@ -4,7 +4,6 @@
     "parameters": {
         "StorageAccount": {
             "type": "string",
-            "defaultValue": $SG
         },
         "vmName": {
             "type": "string",
