@@ -79,15 +79,5 @@
                 }
             }
         }
-    ],
-    "outputs": {
-        "VmName": {
-            "type": "string",
-            "value": "[parameters('VMName')]"
-        },
-        "StorageAccount": {
-            "type": "string",
-            "value": "[Parameters('StorageAccount')]"
-        }
-    }
+    ]
 }
