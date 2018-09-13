@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "StorageAccount": {
-            "type": "string",
+            "type": "string"
         },
         "vmName": {
             "type": "string",
@@ -99,4 +99,15 @@
             }
         }
     ]
+    "outputs": {
+        "VmName": {
+            "type": "string",
+            "value": "[parameters('VMName')]"
+        },
+        "StorageAccount": {
+            "type": "string",
+            "value": "[Parameters('StorageAccount')]"
+        }
+    }
+
 }
