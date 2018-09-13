@@ -73,22 +73,6 @@
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]"
                 },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "[parameters('imagePublisher')]",
-                        "offer": "[parameters('imageOffer')]",
-                        "sku": "[parameters('osSku')]",
-                        "version": "latest"
-                 },
-                 "osDisk": {
-                     "createOption": "FromImage",
-                     "name": "[parameters('VMName')]",
-                     "vhd": {
-                         "uri": "[concat('https://', parameters('StorageAccount'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
-                     },
-                     "caching": "ReadWrite"
-                    }
-                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
