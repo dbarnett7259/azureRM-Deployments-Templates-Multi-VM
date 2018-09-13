@@ -6,6 +6,7 @@
             "type": "string",
             "metadata": {
                 "description": "Name of the Virtual Machine"
+            }
         },
         "adminUsername": {
             "type": "string",
