@@ -108,4 +108,5 @@
             "type": "string",
             "value": "[Parameters('StorageAccount')]"
      }
+    }
 }
