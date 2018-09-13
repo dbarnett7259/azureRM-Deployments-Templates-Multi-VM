@@ -5,7 +5,6 @@
         "StorageAccount": {
             "type": "string"
         },
-
         "vmName": {
             "type": "string",
             "metadata": {
