@@ -98,7 +98,7 @@
                 }
             }
         }
-    ]
+    ],
     "outputs": {
         "VmName": {
             "type": "string",
@@ -107,5 +107,5 @@
         "StorageAccount": {
             "type": "string",
             "value": "[Parameters('StorageAccount')]"
-        }
+     }
 }
