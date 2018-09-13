@@ -79,7 +79,7 @@
                  },
                  "osDisk": {
                      "createOption": "FromImage",
-                     "name": "[concat(parameters('VMName'),'-OSdisk')))]",
+                     "name": "[concat(parameters('VMName')),'-OSdisk')]",
                      "vhd": {
                          "uri": "[concat('https://', parameters('StorageAccount'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
                      },
