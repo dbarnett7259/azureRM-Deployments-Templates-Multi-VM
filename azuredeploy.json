@@ -97,7 +97,7 @@
 		    "windowsConfiguration"{
                         "provisionVMAgent": "true",
                         "enableAutomaticUpdates": "true",
-                        "timeZone": "(parameters('tz'))"
+                        "timeZone": "[parameters('tz')]"
                     }
                 },
                 "storageProfile": {
