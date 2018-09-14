@@ -62,9 +62,23 @@
      },
     "resources": [
         {
+			"type": "Microsoft.Storage/storageAccounts",
+			"name": "[parameters('StorageAccount')]",
+			"apiVersion": "2016-01-01",
+			"location": "[resourceGroup().location]",
+			"sku": {
+				"name": "Standard_LRS"
+			},
+			"kind": "Storage",
+			"properties": {}
+		},
+        {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
+            "dependsOn": [
+				"[resourceId('Microsoft.Storage/storageAccounts/', parameters('StorageAccount'))]"
+			],
             "location": "[parameters('location')]",
             "properties": {
                 "hardwareProfile": {
@@ -84,7 +98,7 @@
                  },
                  "osDisk": {
                      "createOption": "FromImage",
-                     "name": "[concat(parameters('VMName')),'-OSdisk')]",
+                     "name": "[concat(parameters('vmName'), '-OSdisk')]",
                      "vhd": {
                          "uri": "[concat('https://', parameters('StorageAccount'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
                      },
