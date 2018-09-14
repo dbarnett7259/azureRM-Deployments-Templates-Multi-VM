@@ -58,7 +58,7 @@
             "metadata": {
                 "description": "VM deployment location."
             }
-        }
+        },
 	"tz": {
             "type": "string",
             "metadata": {
