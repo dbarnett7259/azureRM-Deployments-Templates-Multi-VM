@@ -94,7 +94,7 @@
                     "computerName": "[parameters('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
-		    "windowsConfiguration" {
+		    "windowsConfiguration": {
                         "provisionVMAgent": "true",
                         "enableAutomaticUpdates": "true",
                         "timeZone": "[parameters('tz')]"
