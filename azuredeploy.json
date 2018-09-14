@@ -95,8 +95,8 @@
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]"
 		    "windowsConfiguration"{
-                        "provisionVMAgent": "true"
-                        "enableAutomaticUpdates": "true"
+                        "provisionVMAgent": "true",
+                        "enableAutomaticUpdates": "true",
                         "timeZone": "(parameters($tz))"
                     }
                 },
