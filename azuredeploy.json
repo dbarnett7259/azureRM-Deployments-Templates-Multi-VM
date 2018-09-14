@@ -63,7 +63,8 @@
             "type": "string",
             "metadata": {
                 "description": "Time Zone"
-            }    
+            }
+	}
      },
     "resources": [
         {
