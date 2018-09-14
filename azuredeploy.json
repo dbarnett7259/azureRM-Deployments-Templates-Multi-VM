@@ -59,6 +59,11 @@
                 "description": "VM deployment location."
             }
         }
+	"tz": {
+            "type": "string",
+            "metadata": {
+                "description": "Time Zone"
+            }    
      },
     "resources": [
         {
@@ -88,6 +93,11 @@
                     "computerName": "[parameters('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]"
+		    "windowsConfiguration"{
+                        "provisionVMAgent": "true"
+                        "enableAutomaticUpdates": "true"
+                        "timeZone": "(parameters($tz))"
+                    }
                 },
                 "storageProfile": {
                     "imageReference": {
