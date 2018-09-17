@@ -93,7 +93,7 @@
             "type":  "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion":  "2016-03-30",
             "comments":  "VM Extension to display Background Information."
-                      }
+                  },
         {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
@@ -105,7 +105,7 @@
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "[parameters('vmSize')]"
-                },
+                 },
                 "osProfile": {
                     "computerName": "[parameters('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
