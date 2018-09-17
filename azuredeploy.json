@@ -79,6 +79,22 @@
 			"properties": {}
 		},
         {
+            "name":  "[concat(parameters('vmName'),'/BGInfo')]",
+            "dependsOn":  [
+                            "[resourceId('Microsoft.Compute/virtualMachines', parameters('Vmname'))]"
+                        ],
+            "location":  "eastus",
+            "properties":  {
+                                "publisher":  "Microsoft.Compute",
+                                "autoUpgradeMinorVersion":  "true",
+                                "typeHandlerVersion":  "2.1",
+                                "type":  "BGInfo"
+                            },
+            "type":  "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion":  "2016-03-30",
+            "comments":  "VM Extension to display Background Information."
+                      }
+        {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
