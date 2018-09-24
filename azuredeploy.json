@@ -132,7 +132,7 @@
                             }
                         }
                     }
-                }
+                },
         {
             "type":  "Microsoft.Compute/virtualMachines/extensions",
             "name":  "[concat(parameters('vmName'),'/BGInfo')]",
