@@ -14,6 +14,18 @@
                 "description": "Name of the Virtual Machine"
             }
         },
+	"DCName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the Virtual Machine if it is a domain controller"
+            }
+        },    
+        "DomainName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the AD Domain"
+            }
+        },    
         "adminUsername": {
             "type": "string",
             "metadata": {
@@ -84,7 +96,7 @@
                     "apiVersion": "2017-03-30",
                     "location": "[parameters('location')]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', variables('VMName'))]"
+                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DCName'))]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Powershell",
@@ -114,7 +126,7 @@
             "dependsOn":  [
                             "[resourceId('Microsoft.Compute/virtualMachines', parameters('Vmname'))]"
                         ],
-            "location":  "eastus",
+            "location":  "[parameters('location')]",
             "properties":  {
                                 "publisher":  "Microsoft.Compute",
                                 "autoUpgradeMinorVersion":  "true",
