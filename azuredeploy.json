@@ -108,7 +108,7 @@
                     "apiVersion": "2017-03-30",
                     "location": "[parameters('location')]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DCName'))]"
+                        "[resourceId('Microsoft.Compute/virtualMachines', parameters('DCName'))]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Powershell",
