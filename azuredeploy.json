@@ -26,8 +26,8 @@
                 "description": "Name of the Virtual Machine"
             }
         },
-	    "DCName": {
-            "type": "string",
+	"DCName": {
+	    "type": "string",
             "metadata": {
                 "description": "Name of the Virtual Machine if it is a domain controller"
             }
@@ -83,7 +83,7 @@
                 "description": "VM deployment location."
             }
         },
-	    "tz": {
+	"tz": {
             "type": "string",
             "metadata": {
                 "description": "Time Zone"
@@ -92,15 +92,15 @@
      },
     "resources": [
         {
-			"type": "Microsoft.Storage/storageAccounts",
-			"name": "[parameters('StorageAccount')]",
-			"apiVersion": "2016-01-01",
-			"location": "[resourceGroup().location]",
-			"sku": {
-				"name": "Standard_LRS"
+		"type": "Microsoft.Storage/storageAccounts",
+		"name": "[parameters('StorageAccount')]",
+		"apiVersion": "2016-01-01",
+		"location": "[resourceGroup().location]",
+		"sku": {
+			"name": "Standard_LRS"
 			},
-			"kind": "Storage",
-			"properties": {}
+		"kind": "Storage",
+		"properties": {}
 		},
 	    {
                     "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -116,7 +116,7 @@
                         "typeHandlerVersion": "2.19",
                         "autoUpgradeMinorVersion": true,
                         "settings": {
-                            "ModulesUrl": "[concat(parameters('artifactsLocation'), '/DSC/CreateADPDC.zip', parameters('artifactsLocationSasToken'))]",
+                            "ModulesUrl": "[concat(parameters('artifactsLocation'), '/DSC-test/CreateADPDC.zip', parameters('artifactsLocationSasToken'))]",
                             "ConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
                             "Properties": {
                                 "DomainName": "[parameters('domainName')]",
