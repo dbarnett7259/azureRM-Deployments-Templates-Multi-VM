@@ -102,37 +102,7 @@
 		"kind": "Storage",
 		"properties": {}
 		},
-	    {
-                    "type": "Microsoft.Compute/virtualMachines/extensions",
-                    "name": "CreateADForest",
-                    "apiVersion": "2017-03-30",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', parameters('DCName'))]"
-                    ],
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.19",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "ModulesUrl": "[concat(parameters('artifactsLocation'), '/Master/DSC/CreateADPDC.zip', parameters('artifactsLocationSasToken'))]",
-                            "ConfigurationFunction": "create-adpdc.ps1\\CreateADPDC",
-                            "Properties": {
-                                "DomainName": "[parameters('domainName')]",
-                                "AdminCreds": {
-                                    "UserName": "[parameters('adminUsername')]",
-                                    "Password": "PrivateSettingsRef:AdminPassword"
-                                }
-                            }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                "AdminPassword": "[parameters('adminPassword')]"
-                            }
-                        }
-                    }
-                },
+	    
         {
             "type":  "Microsoft.Compute/virtualMachines/extensions",
             "name":  "[concat(parameters('vmName'),'/BGInfo')]",
@@ -195,7 +165,40 @@
                         }
                     ]
                 }
-            }
+            },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "name": "CreateADForest",
+                    "apiVersion": "2017-03-30",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DCName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Powershell",
+                        "type": "DSC",
+                        "typeHandlerVersion": "2.19",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "ModulesUrl": "[concat(parameters('_artifactsLocation'), '/Master/DSC/CreateADPDC.zip', parameters('_artifactsLocationSasToken'))]",
+                            "ConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
+                            "Properties": {
+                                "DomainName": "[parameters('domainName')]",
+                                "AdminCreds": {
+                                    "UserName": "[parameters('adminUsername')]",
+                                    "Password": "PrivateSettingsRef:AdminPassword"
+                                }
+                            }
+                        },
+                        "protectedSettings": {
+                            "Items": {
+                                "AdminPassword": "[parameters('adminPassword')]"
+                            }
+                        }
+                    }
+                }
+            ]
         }
     ]
 }
