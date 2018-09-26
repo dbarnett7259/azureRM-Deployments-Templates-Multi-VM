@@ -91,6 +91,9 @@
             }
 	}
      },
+    "variables": {
+        "DCName": "DC1"
+        },
     "resources": [
         {
 		"type": "Microsoft.Storage/storageAccounts",
