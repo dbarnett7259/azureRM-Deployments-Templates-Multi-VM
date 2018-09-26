@@ -28,7 +28,7 @@
         },
 	"DCName": {
 	    "type": "string",
-            "defaultvalue": "DC1"
+            "defaultvalue": "DC1",
 	    "metadata": {
                 "description": "Name of the Virtual Machine if it is a domain controller"
             }
