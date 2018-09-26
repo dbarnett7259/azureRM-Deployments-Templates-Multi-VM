@@ -92,7 +92,7 @@
 	}
      },
     "variables": {
-        "DCName": "DC1"
+        "DomainController": "DC1"
         },
     "resources": [
         {
@@ -177,7 +177,7 @@
                     "apiVersion": "2017-03-30",
                     "location": "[parameters('location')]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DCName'))]"
+                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Powershell",
