@@ -26,13 +26,7 @@
                 "description": "Name of the Virtual Machine"
             }
         },
-	    "DCName": {
-	        "type": "string",
-                "metadata": {
-                    "description": "Name of the Virtual Machine if it is a domain controller"
-                }
-        },    
-        "DomainName": {
+	"DomainName": {
             "type": "string",
             "metadata": {
                 "description": "Name of the AD Domain"
@@ -92,9 +86,9 @@
      },
     "variables": {
 	    "DomainController": {
-            "type": "string",
-            "defaultValue": "DC1"
-        }
+            	"type": "string",
+            	"defaultValue": "DC1"
+        	}
     },
     "resources": [
         {
