@@ -95,6 +95,7 @@
         "DomainController": "DC1"
         },
     "resources": [
+    {
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "CreateADForest",
@@ -127,7 +128,7 @@
                     }
         },
 	    "resources": [
-           {
+       {
 		"type": "Microsoft.Storage/storageAccounts",
 		"name": "[parameters('StorageAccount')]",
 		"apiVersion": "2016-01-01",
@@ -138,7 +139,7 @@
 		"kind": "Storage",
 		"properties": {}
 		},
-	    {
+	   {
             "type":  "Microsoft.Compute/virtualMachines/extensions",
             "name":  "[concat(parameters('vmName'),'/BGInfo')]",
             "apiVersion":  "2016-03-30",
@@ -155,7 +156,7 @@
             
             "comments":  "VM Extension to display Background Information."
                   },
-        {
+       {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
@@ -206,4 +207,3 @@
    }
   ]  
 }
-
