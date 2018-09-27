@@ -96,19 +96,19 @@
         },
     "resources": [
         {
-                    "type": "Microsoft.Compute/virtualMachines/extensions",
-                    "name": "CreateADForest",
-                    "apiVersion": "2017-03-30",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "CreateADForest",
+            "apiVersion": "2017-03-30",
+            "location": "[parameters('location')]",
+            "dependsOn": [
                         "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
                     ],
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.19",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.19",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
                             "ModulesUrl": "[concat(parameters('artifactsLocation'), '/master/DSC/createADPDC.zip', parameters('artifactsLocationSasToken'))]",
                             "ConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
                             "Properties": {
@@ -119,14 +119,16 @@
                                 }
                             }
                         },
-                        "protectedSettings": {
+                "protectedSettings": {
                             "Items": {
                                 "AdminPassword": "[parameters('adminPassword')]"
                             }
                         }
                     }
-                },
-	    {
+        },
+	    "resources": [
+       {
+        {
 		"type": "Microsoft.Storage/storageAccounts",
 		"name": "[parameters('StorageAccount')]",
 		"apiVersion": "2016-01-01",
@@ -202,4 +204,7 @@
             }
         }
     ]
+   }
+  ]  
 }
+
