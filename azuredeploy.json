@@ -127,8 +127,7 @@
                     }
         },
 	    "resources": [
-       {
-        {
+           {
 		"type": "Microsoft.Storage/storageAccounts",
 		"name": "[parameters('StorageAccount')]",
 		"apiVersion": "2016-01-01",
