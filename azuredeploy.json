@@ -77,6 +77,12 @@
                 "description": "FQDN of VMname"
             }
         },
+	"HostDNSNameScriptArgument": {
+	    "type": "string",
+	    "metadata": {
+                "description": "Full External DNS name"
+            }
+	},
 	"location": {
         "type": "string",
         "metadata": {
@@ -94,9 +100,8 @@
 	    "DomainController": {
             	"type": "string",
             	"defaultValue": "DC1"
-        	},
-    "hostDNSNameScriptArgument": "[concat(parameters,('PublicDNSName'),'.',parameters('location'),'.cloudapp.azure.com')]"
-    },
+        	}
+     },
     "resources": [
         {
 		"type": "Microsoft.Storage/storageAccounts",
