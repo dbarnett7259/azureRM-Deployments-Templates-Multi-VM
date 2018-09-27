@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-         "StorageAccount": {
+        "StorageAccount": {
             "type": "string",
             "metadata": {
                 "description": "Storage Account Name for all VM disks"
@@ -26,11 +26,11 @@
                 "description": "Name of the Virtual Machine"
             }
         },
-	"DCName": {
-	    "type": "string",
-            "metadata": {
-                "description": "Name of the Virtual Machine if it is a domain controller"
-            }
+	    "DCName": {
+	        "type": "string",
+                "metadata": {
+                    "description": "Name of the Virtual Machine if it is a domain controller"
+                }
         },    
         "DomainName": {
             "type": "string",
@@ -83,18 +83,18 @@
                 "description": "VM deployment location."
             }
         },
-	"tz": {
-            "type": "string",
-            "metadata": {
-                "description": "Time Zone"
-            }
-	}
+	    "tz": {
+                "type": "string",
+                "metadata": {
+                    "description": "Time Zone"
+                }
+	    }
      },
-    "variables: {
-	"DomainControler": {
+    "variables": {
+	    "DomainController": {
             "type": "string",
-            "DefaultValue": "DC1"
-	}
+            "defaultValue": "DC1"
+        }
     },
     "resources": [
         {
@@ -177,7 +177,8 @@
                     "type": "extensions",
                     "name": "CreateADForest",
                     "apiVersion": "2017-03-30",
-                    "location": "[parameters('location')]",
+                    "condition": "[equals(parameters('VMName'), variables('DomainController'))]",
+		    "location": "[parameters('location')]",
                     "dependsOn": [
                         "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
                     ],
