@@ -71,7 +71,7 @@
                 "description": "Network interface id."
             }
         },
-        "PublicIPName": {
+        "PublicDNSName": {
             "type": "string",
             "metadata": {
                 "description": "FQDN of VMname"
@@ -222,7 +222,7 @@
                         "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1",
                         "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe"
                    ],
-                     "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',parameters('PublicIPName'))]"
+                     "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',parameters('PublicDNSName'))]"
                     }
                   }
                 }
