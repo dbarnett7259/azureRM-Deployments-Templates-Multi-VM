@@ -96,7 +96,7 @@
         },
     "resources": [
         {
-                    "type": "Microsoft.Compute/virtualMachines/extensions",
+                    "type": "extensions",
                     "name": "CreateADForest",
                     "apiVersion": "2017-03-30",
                     "location": "[parameters('location')]",
