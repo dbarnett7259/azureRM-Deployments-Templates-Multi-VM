@@ -171,7 +171,7 @@
                     "type": "extensions",
                     "name": "CreateADForest",
                     "apiVersion": "2017-03-30",
-                    "condition": "[equals(parameters('VMName'), variables('DomainController'))]",
+                    "condition": "[equals(parameters('VMName'), 'DC1', variables('DomainController'))]",
 		    "location": "[parameters('location')]",
                     "dependsOn": [
                         "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
