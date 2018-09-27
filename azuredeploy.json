@@ -28,8 +28,7 @@
         },
 	"DCName": {
 	    "type": "string",
-            "defaultValue": "DC1",
-	    "metadata": {
+            "metadata": {
                 "description": "Name of the Virtual Machine if it is a domain controller"
             }
         },    
@@ -91,44 +90,12 @@
             }
 	}
      },
-    "variables": {
-        "DomainController": "DC1"
-        },
+    "variables: {
+	"name": "DomainController"
+	"DefaultValue": "DC1"
+	},
     "resources": [
-    {
         {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "CreateADForest",
-            "apiVersion": "2017-03-30",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
-                    ],
-            "properties": {
-                "publisher": "Microsoft.Powershell",
-                "type": "DSC",
-                "typeHandlerVersion": "2.19",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                            "ModulesUrl": "[concat(parameters('artifactsLocation'), '/master/DSC/createADPDC.zip', parameters('artifactsLocationSasToken'))]",
-                            "ConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
-                            "Properties": {
-                                "DomainName": "[parameters('domainName')]",
-                                "AdminCreds": {
-                                    "UserName": "[parameters('adminUsername')]",
-                                    "Password": "PrivateSettingsRef:AdminPassword"
-                                }
-                            }
-                        },
-                "protectedSettings": {
-                            "Items": {
-                                "AdminPassword": "[parameters('adminPassword')]"
-                            }
-                        }
-                    }
-        },
-	    "resources": [
-       {
 		"type": "Microsoft.Storage/storageAccounts",
 		"name": "[parameters('StorageAccount')]",
 		"apiVersion": "2016-01-01",
@@ -139,7 +106,8 @@
 		"kind": "Storage",
 		"properties": {}
 		},
-	   {
+	    
+        {
             "type":  "Microsoft.Compute/virtualMachines/extensions",
             "name":  "[concat(parameters('vmName'),'/BGInfo')]",
             "apiVersion":  "2016-03-30",
@@ -156,7 +124,7 @@
             
             "comments":  "VM Extension to display Background Information."
                   },
-       {
+        {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
@@ -201,9 +169,40 @@
                         }
                     ]
                 }
-            }
+            },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "name": "CreateADForest",
+                    "apiVersion": "2017-03-30",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Powershell",
+                        "type": "DSC",
+                        "typeHandlerVersion": "2.19",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "ModulesUrl": "[concat(parameters('_artifactsLocation'), '/Master/DSC/CreateADPDC.zip', parameters('_artifactsLocationSasToken'))]",
+                            "ConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
+                            "Properties": {
+                                "DomainName": "[parameters('domainName')]",
+                                "AdminCreds": {
+                                    "UserName": "[parameters('adminUsername')]",
+                                    "Password": "PrivateSettingsRef:AdminPassword"
+                                }
+                            }
+                        },
+                        "protectedSettings": {
+                            "Items": {
+                                "AdminPassword": "[parameters('adminPassword')]"
+                            }
+                        }
+                    }
+                }
+            ]
         }
     ]
-   }
-  ]  
 }
