@@ -183,7 +183,7 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "ModulesUrl": "[concat(parameters('artifactsLocation'), '/master/DSC/createADPDC.zip', parameters('artifactsLocationSasToken'))]",
-                            "ConfigurationFunction": "createADPDC.ps1\\CreateADPDC",
+                            "ConfigurationFunction": "createadpdc.ps1\\CreateADPDC",
                             "Properties": {
                                 "DomainName": "[parameters('domainName')]",
                                 "AdminCreds": {
