@@ -77,16 +77,16 @@
                 "description": "FQDN of VMname"
             }
         },
-	    "location": {
-            "type": "string",
-            "metadata": {
-                "description": "VM deployment location."
+	"location": {
+        "type": "string",
+        "metadata": {
+            "description": "VM deployment location."
             }
         },
-	    "tz": {
-                "type": "string",
-                "metadata": {
-                    "description": "Time Zone"
+	"tz": {
+        "type": "string",
+        "metadata": {
+           "description": "Time Zone"
                 }
 	    }
      },
