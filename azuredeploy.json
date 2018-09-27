@@ -208,7 +208,7 @@
                 },
                 {
                   "type": "Microsoft.Compute/virtualMachines/extensions",
-                  "name": "[concat(variables('vmName'),'/WinRMCustomScriptExtension')]",
+                  "name": "[concat(parameters('vmName'),'/WinRMCustomScriptExtension')]",
                   "apiVersion": "[variables('apiVersion')]",
                   "location": "[parameters('location')]",
                   "dependsOn": [
