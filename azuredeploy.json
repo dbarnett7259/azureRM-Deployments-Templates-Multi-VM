@@ -169,7 +169,7 @@
             "resources": [
                 {
                     "type": "Microsoft.Compute/virtualMachines/extensions",
-                    "name": "CreateADForest",
+                    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
                     "apiVersion": "2017-03-30",
                     "condition": "[equals(parameters('VMName'), 'DC1')]",
 		    "location": "[parameters('location')]",
