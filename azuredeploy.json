@@ -173,6 +173,9 @@
                     "apiVersion": "2017-03-30",
                     "condition": "[equals(parameters('VMName'), 'DC1')]",
 		    "location": "[resourceGroup().location]",
+		    "dependsOn": [
+                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
+                    ],
                     "properties": {
                         "publisher": "Microsoft.Powershell",
                         "type": "DSC",
