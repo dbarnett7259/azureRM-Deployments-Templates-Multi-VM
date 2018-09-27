@@ -174,8 +174,8 @@
                     "condition": "[equals(parameters('VMName'), 'DC1')]",
 		    "location": "[resourceGroup().location]",
 		    "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', variables('DomainController'))]"
-                    ],
+                        		"[resourceId('Microsoft.Compute/virtualMachines', parameters('VMname'))]"
+                    		],
                     "properties": {
                         "publisher": "Microsoft.Powershell",
                         "type": "DSC",
