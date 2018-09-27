@@ -91,9 +91,11 @@
 	}
      },
     "variables: {
-	"name": "DomainController"
-	"DefaultValue": "DC1"
-	},
+	"DomainControler": {
+            "type": "string",
+            "DefaultValue": "DC1"
+	}
+    },
     "resources": [
         {
 		"type": "Microsoft.Storage/storageAccounts",
