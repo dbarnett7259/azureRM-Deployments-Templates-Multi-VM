@@ -95,7 +95,7 @@
             	"type": "string",
             	"defaultValue": "DC1"
         	},
-    "hostDNSNameScriptArgument": "[concat((parameters,('PublicDNSName'),'.',parameters('location')),'.cloudapp.azure.com')]"
+    "hostDNSNameScriptArgument": "[concat(parameters,('PublicDNSName'),'.',parameters('location'),'.cloudapp.azure.com')]"
     },
     "resources": [
         {
