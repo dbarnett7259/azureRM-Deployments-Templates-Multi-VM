@@ -240,7 +240,7 @@
           "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', parameters('vmname'))]"
           ],
-          "condition": "[not(equals(parameters('VMName')), 'DC1')]",
+          "condition": "[not(parameters('VMName')), 'DC1')]",
           "properties": {
             "publisher": "Microsoft.Compute",
             "type": "JsonADDomainExtension",
