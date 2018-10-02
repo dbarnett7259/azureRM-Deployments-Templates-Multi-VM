@@ -245,7 +245,7 @@
           "name": "[concat(parameters('vmName'),'/joindomain')]",
           "location": "[parameters('location')]",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines/extensions/DC1/CreateADForest')]"
+            "[resourceId('Microsoft.Compute/virtualMachines/extensions', '/DC1/CreateADForest')]"
           ],
           "condition": "[not(equals(parameters('VMName'), 'DC1'))]",
           "properties": {
