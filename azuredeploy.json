@@ -194,7 +194,7 @@
       "dependsOn": [
         "[resourceId('Microsoft.Compute/virtualMachines', parameters('Vmname'))]"
       ],
-      "condition": "[not(equals(parameters('VMName'), 'DC1'))]",
+      "condition": "[not(equals(parameters('VMName'), 'WAP'))]",
       "properties": {
         "publisher": "Microsoft.Compute",
         "type": "JsonADDomainExtension",
