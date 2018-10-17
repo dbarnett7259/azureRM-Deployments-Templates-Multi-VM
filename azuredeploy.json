@@ -121,7 +121,6 @@
       "kind": "Storage",
       "properties": {}
     },
-
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'),'/BGInfo')]",
@@ -213,7 +212,6 @@
       }
     },
         {
-
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "[concat(parameters('vmName'),'/WinRMCustomScriptExtension')]",
           "apiVersion": "2017-03-30",
@@ -231,8 +229,10 @@
                 "https://raw.githubusercontent.com/dbarnett7259/azureRM-Deployments-Templates-Multi-VM/winrm-extension/winRM/makecert.exe"
               ],
               "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',parameters('hostDNSNameScriptArgument'))]"
+                }
             }
-          }
+          },
+        {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
@@ -280,20 +280,20 @@
             },
             "resources": [
                 {
-                    "type": "Microsoft.Compute/virtualMachines/extensions",
-                    "name": "[concat(parameters('VMName'),'/CreateADForest')]",
-                    "apiVersion": "2017-03-30",
-                    "condition": "[equals(parameters('VMName'), 'DC1')]",
-		    "location": "[resourceGroup().location]",
-		    "dependsOn": [
+                "type": "Microsoft.Compute/virtualMachines/extensions",
+                "name": "[concat(parameters('VMName'),'/CreateADForest')]",
+                "apiVersion": "2017-03-30",
+                "condition": "[equals(parameters('VMName'), 'DC1')]",
+		        "location": "[resourceGroup().location]",
+		        "dependsOn": [
                         		"[resourceId('Microsoft.Compute/virtualMachines', parameters('VMname'))]"
                     		],
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.19",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
+                "properties": {
+                    "publisher": "Microsoft.Powershell",
+                    "type": "DSC",
+                    "typeHandlerVersion": "2.19",
+                    "autoUpgradeMinorVersion": true,
+                    "settings": {
                             "ModulesUrl": "[concat(parameters('artifactsLocation'), '/master/DSC/createADPDC.zip', parameters('artifactsLocationSasToken'))]",
                             "ConfigurationFunction": "createadpdc.ps1\\CreateADPDC",
                             "Properties": {
@@ -304,14 +304,14 @@
                                 }
                             }
                         },
-                        "protectedSettings": {
+                    "protectedSettings": {
                             "Items": {
                                 "AdminPassword": "[parameters('adminPassword')]"
                             }
                         }
-		    }
-                }
-            ]
+		        }
+              }
+           ]
         }
       ]
     }
