@@ -181,38 +181,6 @@
       "resources": [
         {
           "type": "Microsoft.Compute/virtualMachines/extensions",
-          "name": "[concat(parameters('VMName'),'/CreateADForest')]",
-          "apiVersion": "2017-03-30",
-          "condition": "[equals(parameters('VMName'), 'DC1')]",
-          "location": "[resourceGroup().location]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', parameters('VMname'))]"
-          ],
-          "properties": {
-            "publisher": "Microsoft.Powershell",
-            "type": "DSC",
-            "typeHandlerVersion": "2.19",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-              "ModulesUrl": "[concat(parameters('artifactsLocation'), '/master/DSC/createADPDC.zip', parameters('artifactsLocationSasToken'))]",
-              "ConfigurationFunction": "createadpdc.ps1\\CreateADPDC",
-              "Properties": {
-                "DomainName": "[parameters('domainName')]",
-                "AdminCreds": {
-                  "UserName": "[parameters('adminUsername')]",
-                  "Password": "PrivateSettingsRef:AdminPassword"
-                }
-              }
-            },
-            "protectedSettings": {
-              "Items": {
-                "AdminPassword": "[parameters('adminPassword')]"
-              }
-            }
-          }
-        },
-        {
-          "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "[concat(parameters('vmName'),'/WinRMCustomScriptExtension')]",
           "apiVersion": "2017-03-30",
           "location": "[parameters('location')]",
