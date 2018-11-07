@@ -225,7 +225,7 @@
             "typeHandlerVersion": "1.4",
             "settings": {
               "fileUris": [
-                "https://raw.githubusercontent.com/dbarnett7259/azureRM-Deployments-Templates-Multi-VM/winrm-extension/winRM/ConfigureWinRM.ps1",
+                "https://raw.githubusercontent.com/dbarnett7259/azureRM-Deployments-Templates-Multi-VM/winrm-extension/winRM/configure-winrm.ps1",
                 "https://raw.githubusercontent.com/dbarnett7259/azureRM-Deployments-Templates-Multi-VM/winrm-extension/winRM/makecert.exe"
               ],
               "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',parameters('hostDNSNameScriptArgument'))]"
