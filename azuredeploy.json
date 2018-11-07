@@ -231,55 +231,8 @@
               "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',parameters('hostDNSNameScriptArgument'))]"
                 }
             }
-          },
-        {
-            "apiVersion": "2017-12-01",
-            "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('vmName')]",
-            "dependsOn": [
-				"[resourceId('Microsoft.Storage/storageAccounts/', parameters('StorageAccount'))]"
-			],
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                 },
-                "osProfile": {
-                    "computerName": "[parameters('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]",
-			    "windowsConfiguration": {
-                            "provisionVMAgent": "true",
-                            "enableAutomaticUpdates": "true",
-                            "timeZone": "[parameters('tz')]"
-                    	}
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "[parameters('imagePublisher')]",
-                        "offer": "[parameters('imageOffer')]",
-                        "sku": "[parameters('osSku')]",
-                        "version": "latest"
-                 },
-                 "osDisk": {
-                     "createOption": "FromImage",
-                     "name": "[concat(parameters('vmName'), '-OSdisk')]",
-                     "vhd": {
-                         "uri": "[concat('https://', parameters('StorageAccount'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
-                     },
-                     "caching": "ReadWrite"
-                    }
-                 },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[parameters('nicId')]"
-                        }
-                    ]
-                }
-            }
-         }
-      ]
+          }
+        ]
     }
   ]
 }
