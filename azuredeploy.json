@@ -210,28 +210,8 @@
           "Password": "[parameters('adminPassword')]"
         }
       }
-    },
-        {
-          "type": "Microsoft.Compute/virtualMachines/extensions",
-          "name": "[concat(parameters('vmName'),'/WinRMCustomScriptExtension')]",
-          "apiVersion": "2017-03-30",
-          "location": "[parameters('location')]",
-          "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-          ],
-          "properties": {
-            "publisher": "Microsoft.Compute",
-            "type": "CustomScriptExtension",
-            "typeHandlerVersion": "1.4",
-            "settings": {
-              "fileUris": [
-                "https://raw.githubusercontent.com/dbarnett7259/azureRM-Deployments-Templates-Multi-VM/winrm-extension/winRM/configure-winrm.ps1",
-                "https://raw.githubusercontent.com/dbarnett7259/azureRM-Deployments-Templates-Multi-VM/winrm-extension/winRM/makecert.exe"
-              ],
-              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',parameters('hostDNSNameScriptArgument'))]"
-                }
-            }
-          }
+    }
+        
         ]
     }
   ]
