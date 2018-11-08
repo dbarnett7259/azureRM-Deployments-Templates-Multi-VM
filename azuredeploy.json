@@ -77,12 +77,6 @@
         "description": "FQDN of VMname"
       }
     },
-    "HostDNSNameScriptArgument": {
-      "type": "string",
-      "metadata": {
-        "description": "Full External DNS name"
-      }
-    },
     "domainJoinOptions": {
       "type": "int",
       "defaultValue": 3,
@@ -211,8 +205,7 @@
         }
       }
     }
-        
-        ]
-    }
-  ]
+   ]
+  }
+ ]
 }
