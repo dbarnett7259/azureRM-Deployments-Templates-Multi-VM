@@ -60,7 +60,6 @@
         },
         "osSku": {
             "type": "string",
-            "defaultValue": "2016-Datacenter",
             "metadata": {
                 "description": "OS sku for VM"
             }
