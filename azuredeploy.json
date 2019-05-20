@@ -107,18 +107,17 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[parameters('StorageAccount')]",
-      "apiVersion": "2016-01-01",
+      "apiVersion": "2019-04-01",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
-      "kind": "Storage",
       "properties": {}
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'),'/BGInfo')]",
-      "apiVersion": "2016-03-30",
+      "apiVersion": "2019-03-01",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Compute/virtualMachines', parameters('Vmname'))]"
@@ -180,7 +179,7 @@
       },
       "resources": [
          {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2019-03-01",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'),'/joindomain')]",
       "location": "[parameters('location')]",
